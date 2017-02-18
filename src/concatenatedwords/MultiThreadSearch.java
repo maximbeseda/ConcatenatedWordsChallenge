@@ -17,6 +17,7 @@ public class MultiThreadSearch {
             }
             threadArray[i] = new ConcatenatedWordsSearch(wordsList, beginPartWordsList, endPartWordsList);
         }
+
         for (int i = 0; i < threadArray.length; i++) {
             try {
                 threadArray[i].getThr().join();
@@ -24,6 +25,7 @@ public class MultiThreadSearch {
                 e.printStackTrace();
             }
         }
+
         ArrayList<String> concatenatedWordsList = mergePartWordsList(threadArray);
         Collections.sort(concatenatedWordsList, ((o1, o2) -> {
             if (o1.length() > o2.length()) {
