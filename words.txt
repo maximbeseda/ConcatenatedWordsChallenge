@@ -12977,7 +12977,7 @@ beggarweeds
 beggary
 begged
 begging
-beginList
+begin
 beginner
 beginners
 beginning
@@ -48698,7 +48698,7 @@ encysting
 encystment
 encystments
 encysts
-endList
+end
 endamage
 endamaged
 endamages
