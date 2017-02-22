@@ -28,7 +28,7 @@ public class ConcatenatedWordsSearch implements Callable<ArrayList<String>> {
             ArrayList<String> tempList = new ArrayList<>();
             String conWord = wordsList.get(i);
             for (int j = 0; j < wordsList.size(); j++) {
-                if (!wordsList.get(j).equals(conWord) && conWord.contains(wordsList.get(j))) {
+                if (!wordsList.get(j).equals(conWord) && conWord.contains(wordsList.get(j)) && (conWord.length() - wordsList.get(j).length()) != 1) {
                     tempList.add(wordsList.get(j));
                 }
             }
@@ -88,47 +88,7 @@ public class ConcatenatedWordsSearch implements Callable<ArrayList<String>> {
                 if (o2.length() > o1.length()) {
                     return 1;
                 }
-                return o1.compareTo(o2);
-            }));
-
-            for (int j = 0; j < tempList.size(); j++) {
-                conWord = conWord.replaceAll(tempList.get(j), "*");
-            }
-
-            if (!conWord.matches("(?i).*[a-zа-я].*")) {
-                concatenatedWordsList.add(wordsList.get(i));
-                continue;
-            }
-            conWord = wordsList.get(i);
-
-            tempList.sort(((o1, o2) -> {
-                if (o1.length() > o2.length()) {
-                    return -1;
-                }
-                if (o2.length() > o1.length()) {
-                    return 1;
-                }
                 return o2.compareTo(o1);
-            }));
-
-            for (int j = 0; j < tempList.size(); j++) {
-                conWord = conWord.replaceAll(tempList.get(j), "*");
-            }
-
-            if (!conWord.matches("(?i).*[a-zа-я].*")) {
-                concatenatedWordsList.add(wordsList.get(i));
-                continue;
-            }
-            conWord = wordsList.get(i);
-
-            tempList.sort(((o1, o2) -> {
-                if (o1.length() > o2.length()) {
-                    return 1;
-                }
-                if (o2.length() > o1.length()) {
-                    return -1;
-                }
-                return o1.compareTo(o2);
             }));
 
             for (int j = 0; j < tempList.size(); j++) {
